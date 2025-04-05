@@ -80,6 +80,13 @@ export class ScraperService {
       const message = `🚧 Atualizações na obra:\n\n${updates.join('\n')}`;
       await this.whatsappService.sendMessage(message);
     }
+
+    if (updates.length === 0) {
+      this.logger.log('Nenhuma atualização encontrada.');
+      await this.whatsappService.sendMessage(
+        '🚧 Obra sem nenhuma atualização 🚧🤡🤡🤡🤡☠️☠️☠️',
+      );
+    }
   }
 
   @Cron('0 10 */5 * *')
