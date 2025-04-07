@@ -60,7 +60,10 @@ export class WhatsappService {
       };
 
       const response = await axios.post(url, payload, { headers });
-      this.logger.log(`Mensagem enviada com sucesso: ${response.data}`);
+      this.logger.log(
+        'Mensagem enviada com sucesso:',
+        JSON.stringify(response.data, null, 2),
+      );
     } catch (error) {
       this.logger.error('Erro ao enviar mensagem no WhatsApp', error);
     }
